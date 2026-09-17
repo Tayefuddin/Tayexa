@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { useReveal } from '../../hooks/useReveal'
 
 interface SectionProps {
   id: string
@@ -21,11 +22,13 @@ function Section({
   containerClassName = '',
   children,
 }: SectionProps) {
+  const { ref, isVisible } = useReveal<HTMLDivElement>()
+
   return (
     <section id={id} className={`scroll-mt-20 py-20 md:py-24 ${className}`}>
       <div className={`max-w-7xl mx-auto px-6 ${containerClassName}`}>
         {(eyebrow || title || description) && (
-          <div className="mb-12 max-w-2xl">
+          <div ref={ref} className={`reveal mb-12 max-w-2xl ${isVisible ? 'reveal-visible' : ''}`}>
             {eyebrow && (
               <p className={`mb-3 text-sm font-semibold uppercase tracking-[0.2em] ${eyebrowClassName}`}>
                 {eyebrow}

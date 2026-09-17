@@ -1,6 +1,9 @@
 import { ArrowRight, Briefcase, HardHat, Home, Wrench } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import Section from '../components/layout/Section'
+import { useReveal } from '../hooks/useReveal'
+import { useSpotlight } from '../hooks/useSpotlight'
+import { mergeRefs } from '../lib/mergeRefs'
 
 interface Service {
   icon: LucideIcon
@@ -64,46 +67,63 @@ const SERVICES: Service[] = [
   },
 ]
 
+interface ServiceCardProps extends Service {
+  delay: number
+}
+
+function ServiceCard({ icon: Icon, title, summary, scope, linkLabel, linkHref, delay }: ServiceCardProps) {
+  const { ref: revealRef, isVisible } = useReveal<HTMLDivElement>()
+  const { ref: spotlightRef, onMouseMove } = useSpotlight<HTMLDivElement>()
+
+  return (
+    <div
+      ref={mergeRefs(revealRef, spotlightRef)}
+      onMouseMove={onMouseMove}
+      style={{ transitionDelay: `${delay}ms` }}
+      className={`card-interactive card-spotlight group reveal rounded-lg border border-slate bg-surface p-8 ${
+        isVisible ? 'reveal-visible' : ''
+      }`}
+    >
+      <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg border border-slate bg-navy text-cream transition-colors duration-300 group-hover:border-cream">
+        <Icon size={22} strokeWidth={1.75} />
+      </div>
+
+      <h3 className="mt-5 font-heading text-xl font-bold text-cream md:text-2xl">{title}</h3>
+
+      <p className="mt-3 text-sm leading-relaxed text-muted md:text-base">{summary}</p>
+
+      <p className="mt-5 border-t border-slate/60 pt-5 text-xs font-semibold uppercase tracking-widest text-cream/40">
+        Scope
+      </p>
+      <ul className="mt-3 space-y-1.5">
+        {scope.map((item) => (
+          <li key={item} className="flex items-start gap-2 text-xs text-muted md:text-sm">
+            <span aria-hidden="true" className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-slate" />
+            {item}
+          </li>
+        ))}
+      </ul>
+
+      <a
+        href={linkHref}
+        className="group/cta mt-6 inline-flex items-center gap-2 text-sm font-semibold text-cream transition-colors duration-300 hover:text-cream/80"
+      >
+        {linkLabel}
+        <ArrowRight
+          size={16}
+          className="transition-transform duration-300 group-hover/cta:translate-x-1.5"
+        />
+      </a>
+    </div>
+  )
+}
+
 function Services() {
   return (
     <Section id="services" eyebrow="What We Do" title="Comprehensive Construction & Development Services">
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-        {SERVICES.map(({ icon: Icon, title, summary, scope, linkLabel, linkHref }) => (
-          <div
-            key={title}
-            className="group rounded-lg border border-slate bg-surface p-8 transition-all duration-300 hover:-translate-y-1 hover:border-cream"
-          >
-            <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg border border-slate bg-navy text-cream transition-colors duration-300 group-hover:border-cream">
-              <Icon size={22} strokeWidth={1.75} />
-            </div>
-
-            <h3 className="mt-5 font-heading text-xl font-bold text-cream md:text-2xl">{title}</h3>
-
-            <p className="mt-3 text-sm leading-relaxed text-muted md:text-base">{summary}</p>
-
-            <p className="mt-5 border-t border-slate/60 pt-5 text-xs font-semibold uppercase tracking-widest text-cream/40">
-              Scope
-            </p>
-            <ul className="mt-3 space-y-1.5">
-              {scope.map((item) => (
-                <li key={item} className="flex items-start gap-2 text-xs text-muted md:text-sm">
-                  <span aria-hidden="true" className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-slate" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-
-            <a
-              href={linkHref}
-              className="group/cta mt-6 inline-flex items-center gap-2 text-sm font-semibold text-cream transition-colors duration-300 hover:text-cream/80"
-            >
-              {linkLabel}
-              <ArrowRight
-                size={16}
-                className="transition-transform duration-300 group-hover/cta:translate-x-1"
-              />
-            </a>
-          </div>
+        {SERVICES.map((service, index) => (
+          <ServiceCard key={service.title} {...service} delay={index * 80} />
         ))}
       </div>
     </Section>

@@ -1,6 +1,9 @@
 import { Compass, Leaf, ShieldCheck } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import Section from '../components/layout/Section'
+import { useReveal } from '../hooks/useReveal'
+import { useSpotlight } from '../hooks/useSpotlight'
+import { mergeRefs } from '../lib/mergeRefs'
 
 interface Pillar {
   icon: LucideIcon
@@ -27,6 +30,32 @@ const PILLARS: Pillar[] = [
   },
 ]
 
+interface PillarCardProps extends Pillar {
+  delay: number
+}
+
+function PillarCard({ icon: Icon, title, description, delay }: PillarCardProps) {
+  const { ref: revealRef, isVisible } = useReveal<HTMLDivElement>()
+  const { ref: spotlightRef, onMouseMove } = useSpotlight<HTMLDivElement>()
+
+  return (
+    <div
+      ref={mergeRefs(revealRef, spotlightRef)}
+      onMouseMove={onMouseMove}
+      style={{ transitionDelay: `${delay}ms` }}
+      className={`card-interactive card-spotlight group reveal rounded-xl border border-slate bg-navy/60 p-6 ${
+        isVisible ? 'reveal-visible' : ''
+      }`}
+    >
+      <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg border border-slate bg-surface text-cream transition-colors duration-300 group-hover:border-cream">
+        <Icon size={22} strokeWidth={1.75} />
+      </div>
+      <h3 className="mt-4 font-heading text-lg font-bold text-cream">{title}</h3>
+      <p className="mt-2 text-sm leading-relaxed text-muted">{description}</p>
+    </div>
+  )
+}
+
 function About() {
   return (
     <Section id="about" eyebrow="Who We Are" title="Built on Integrity. Driven by Innovation." className="bg-surface">
@@ -48,17 +77,8 @@ function About() {
         </div>
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-3 lg:grid-cols-1">
-          {PILLARS.map(({ icon: Icon, title, description }) => (
-            <div
-              key={title}
-              className="group rounded-xl border border-slate bg-navy/60 p-6 transition-colors duration-300 hover:border-cream"
-            >
-              <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg border border-slate bg-surface text-cream transition-colors duration-300 group-hover:border-cream">
-                <Icon size={22} strokeWidth={1.75} />
-              </div>
-              <h3 className="mt-4 font-heading text-lg font-bold text-cream">{title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{description}</p>
-            </div>
+          {PILLARS.map((pillar, index) => (
+            <PillarCard key={pillar.title} {...pillar} delay={index * 80} />
           ))}
         </div>
       </div>

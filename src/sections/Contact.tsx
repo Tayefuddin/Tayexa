@@ -22,7 +22,7 @@ type SubmitStatus = 'idle' | 'submitting' | 'success'
 
 const inputClasses =
   'w-full rounded-md border border-slate bg-surface px-4 py-3 text-sm text-cream placeholder:text-muted focus:border-cream focus:outline-none focus:ring-2 focus:ring-cream/40 transition-colors duration-200'
-const labelClasses = 'mb-2 block text-sm font-medium text-cream/80'
+const labelClasses = 'mb-2 block text-sm font-medium text-cream/80 transition-colors duration-200'
 
 function Contact() {
   const [status, setStatus] = useState<SubmitStatus>('idle')
@@ -103,7 +103,7 @@ function Contact() {
         <div className="lg:col-span-7">
           <form onSubmit={handleSubmit} className="rounded-lg border border-slate bg-navy p-8">
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-              <div>
+              <div className="field-group">
                 <label htmlFor="name" className={labelClasses}>
                   Full Name
                 </label>
@@ -117,7 +117,7 @@ function Contact() {
                 />
               </div>
 
-              <div>
+              <div className="field-group">
                 <label htmlFor="email" className={labelClasses}>
                   Email Address
                 </label>
@@ -131,7 +131,7 @@ function Contact() {
                 />
               </div>
 
-              <div>
+              <div className="field-group">
                 <label htmlFor="phone" className={labelClasses}>
                   Phone Number
                 </label>
@@ -145,7 +145,7 @@ function Contact() {
                 />
               </div>
 
-              <div>
+              <div className="field-group">
                 <label htmlFor="projectType" className={labelClasses}>
                   Project Type
                 </label>
@@ -161,7 +161,7 @@ function Contact() {
                 </select>
               </div>
 
-              <div>
+              <div className="field-group">
                 <label htmlFor="location" className={labelClasses}>
                   Estimated Project Location
                 </label>
@@ -174,7 +174,7 @@ function Contact() {
                 />
               </div>
 
-              <div>
+              <div className="field-group">
                 <label htmlFor="startDate" className={labelClasses}>
                   Target Start Date
                 </label>
@@ -190,7 +190,7 @@ function Contact() {
                 </select>
               </div>
 
-              <div className="sm:col-span-2">
+              <div className="field-group sm:col-span-2">
                 <label htmlFor="message" className={labelClasses}>
                   Project Overview / Message
                 </label>
@@ -206,7 +206,7 @@ function Contact() {
               <button
                 type="submit"
                 disabled={status !== 'idle'}
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-cream px-7 py-3.5 text-sm font-semibold text-navy transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_-4px_rgba(252,241,208,0.4)] disabled:pointer-events-none disabled:opacity-80 disabled:hover:translate-y-0 disabled:hover:shadow-none sm:col-span-2"
+                className="inline-flex items-center justify-center gap-2 rounded-md bg-cream px-7 py-3.5 text-sm font-semibold text-navy transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_-4px_rgba(252,241,208,0.4)] active:scale-[0.98] disabled:pointer-events-none disabled:opacity-80 disabled:hover:translate-y-0 disabled:hover:shadow-none sm:col-span-2"
               >
                 {status === 'idle' && (
                   <>

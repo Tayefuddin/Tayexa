@@ -45,7 +45,7 @@ function Footer() {
           </div>
           <a
             href="#"
-            className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-md bg-cream px-6 py-3.5 text-sm font-semibold text-navy transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_-4px_rgba(252,241,208,0.4)] lg:w-auto"
+            className="btn-shimmer inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-md bg-cream px-6 py-3.5 text-sm font-semibold text-navy transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_-4px_rgba(252,241,208,0.4)] active:scale-95 lg:w-auto"
           >
             <Download size={18} />
             Download Corporate Profile (PDF)

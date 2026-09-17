@@ -1,6 +1,9 @@
 import { Award, Building, FileCheck, ShieldCheck, User } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import Section from '../components/layout/Section'
+import { useReveal } from '../hooks/useReveal'
+import { useSpotlight } from '../hooks/useSpotlight'
+import { mergeRefs } from '../lib/mergeRefs'
 
 interface Testimonial {
   quote: string
@@ -52,7 +55,46 @@ const ACCREDITATIONS: Accreditation[] = [
   },
 ]
 
+interface TestimonialCardProps extends Testimonial {
+  delay: number
+}
+
+function TestimonialCard({ quote, role, company, delay }: TestimonialCardProps) {
+  const { ref: revealRef, isVisible } = useReveal<HTMLDivElement>()
+  const { ref: spotlightRef, onMouseMove } = useSpotlight<HTMLDivElement>()
+
+  return (
+    <div
+      ref={mergeRefs(revealRef, spotlightRef)}
+      onMouseMove={onMouseMove}
+      style={{ transitionDelay: `${delay}ms` }}
+      className={`card-interactive card-spotlight reveal relative overflow-hidden rounded-lg border border-slate bg-surface p-8 ${
+        isVisible ? 'reveal-visible' : ''
+      }`}
+    >
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-4 left-6 font-heading text-8xl leading-none text-slate/50 select-none"
+      >
+        &ldquo;
+      </span>
+      <p className="relative mt-8 text-base leading-relaxed text-muted md:text-lg">{quote}</p>
+      <div className="mt-8 flex items-center gap-4 border-t border-slate/60 pt-6">
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-slate bg-navy text-cream">
+          <User size={20} strokeWidth={1.75} />
+        </div>
+        <div>
+          <p className="font-heading text-base font-bold text-cream">{role}</p>
+          <p className="text-sm text-muted">{company}</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function Testimonials() {
+  const { ref: strapRef, isVisible: isStrapVisible } = useReveal<HTMLDivElement>()
+
   return (
     <Section
       id="testimonials"
@@ -61,35 +103,18 @@ function Testimonials() {
       title="Trusted by Developers, Property Owners, and Corporate Partners"
     >
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-        {TESTIMONIALS.map(({ quote, role, company }) => (
-          <div
-            key={role}
-            className="relative overflow-hidden rounded-lg border border-slate bg-surface p-8"
-          >
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute -top-4 left-6 font-heading text-8xl leading-none text-slate/50 select-none"
-            >
-              &ldquo;
-            </span>
-            <p className="relative mt-8 text-base leading-relaxed text-muted md:text-lg">
-              {quote}
-            </p>
-            <div className="mt-8 flex items-center gap-4 border-t border-slate/60 pt-6">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-slate bg-navy text-cream">
-                <User size={20} strokeWidth={1.75} />
-              </div>
-              <div>
-                <p className="font-heading text-base font-bold text-cream">{role}</p>
-                <p className="text-sm text-muted">{company}</p>
-              </div>
-            </div>
-          </div>
+        {TESTIMONIALS.map((testimonial, index) => (
+          <TestimonialCard key={testimonial.role} {...testimonial} delay={index * 80} />
         ))}
       </div>
 
       <div className="mt-16 border-t border-slate/60 pt-16">
-        <div className="rounded-2xl border border-slate/60 bg-surface/50 p-8 md:p-10">
+        <div
+          ref={strapRef}
+          className={`reveal rounded-2xl border border-slate/60 bg-surface/50 p-8 md:p-10 ${
+            isStrapVisible ? 'reveal-visible' : ''
+          }`}
+        >
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {ACCREDITATIONS.map(({ icon: Icon, title, descriptor }) => (
               <div key={title} className="flex items-start gap-4">

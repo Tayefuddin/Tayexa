@@ -1,0 +1,15 @@
+import type { Ref, RefCallback } from 'react'
+
+/** Combines multiple refs (from independent hooks) so they can share one DOM node. */
+export function mergeRefs<T>(...refs: Array<Ref<T> | undefined>): RefCallback<T> {
+  return (node) => {
+    for (const ref of refs) {
+      if (!ref) continue
+      if (typeof ref === 'function') {
+        ref(node)
+      } else {
+        ;(ref as { current: T | null }).current = node
+      }
+    }
+  }
+}

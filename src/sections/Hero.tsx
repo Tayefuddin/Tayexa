@@ -49,13 +49,13 @@ function Hero() {
         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
           <a
             href="#contact"
-            className="inline-flex w-full items-center justify-center rounded-md bg-cream px-7 py-3.5 text-sm font-semibold text-navy transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_-4px_rgba(252,241,208,0.4)] sm:w-auto"
+            className="btn-shimmer inline-flex w-full items-center justify-center rounded-md bg-cream px-7 py-3.5 text-sm font-semibold text-navy transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_-4px_rgba(252,241,208,0.4)] active:scale-95 sm:w-auto"
           >
             Request a Consultation
           </a>
           <a
             href="#portfolio"
-            className="inline-flex w-full items-center justify-center rounded-md border border-slate px-7 py-3.5 text-sm font-semibold text-cream transition-colors duration-300 hover:bg-surface sm:w-auto"
+            className="inline-flex w-full items-center justify-center rounded-md border border-slate px-7 py-3.5 text-sm font-semibold text-cream transition-all duration-300 hover:bg-slate/30 active:scale-95 sm:w-auto"
           >
             Explore Our Portfolio
           </a>
