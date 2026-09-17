@@ -3,6 +3,7 @@ import type { ReactNode } from 'react'
 interface SectionProps {
   id: string
   eyebrow?: string
+  eyebrowClassName?: string
   title?: string
   description?: string
   className?: string
@@ -13,6 +14,7 @@ interface SectionProps {
 function Section({
   id,
   eyebrow,
+  eyebrowClassName = 'text-cream/60',
   title,
   description,
   className = '',
@@ -25,7 +27,7 @@ function Section({
         {(eyebrow || title || description) && (
           <div className="mb-12 max-w-2xl">
             {eyebrow && (
-              <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-cream/60">
+              <p className={`mb-3 text-sm font-semibold uppercase tracking-[0.2em] ${eyebrowClassName}`}>
                 {eyebrow}
               </p>
             )}
