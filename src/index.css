@@ -1,8 +1,37 @@
 @import "tailwindcss";
-@import "@fontsource/inter/400.css";
-@import "@fontsource/inter/500.css";
-@import "@fontsource/inter/600.css";
-@import "@fontsource/inter/700.css";
+
+/* Self-hosted Inter (latin subset only) so the 400/600 weights used above
+   the fold can be preloaded from index.html with a stable, predictable URL
+   — the @fontsource package ships every subset (cyrillic, greek, vietnamese)
+   which bloats the payload and defeats precise preloading. */
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter/inter-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter/inter-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter/inter-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter/inter-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* Zodiak is a licensed display serif (Pangram Pangram). Drop the licensed
    woff2 files into /public/fonts/zodiak/ to activate it; until then the

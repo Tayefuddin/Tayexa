@@ -4,11 +4,157 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tayexa Holdings | Real Estate Development &amp; Construction</title>
+
+    <!-- Primary metadata -->
+    <title>Tayexa Holdings | Real Estate Development &amp; Construction Engineering</title>
     <meta
       name="description"
-      content="Tayexa Holdings is a premier real estate development and construction firm delivering landmark properties with uncompromising quality."
+      content="Premier real estate development and turnkey construction firm delivering luxury residential projects and commercial infrastructure with structural precision."
     />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://tayexaholdings.com/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tayexaholdings.com/" />
+    <meta property="og:site_name" content="Tayexa Holdings" />
+    <meta
+      property="og:title"
+      content="Tayexa Holdings | Real Estate Development &amp; Construction Engineering"
+    />
+    <meta
+      property="og:description"
+      content="Premier real estate development and turnkey construction firm delivering luxury residential projects and commercial infrastructure with structural precision."
+    />
+    <meta property="og:image" content="https://tayexaholdings.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Tayexa Holdings — Real Estate Development & Construction" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Tayexa Holdings | Real Estate Development &amp; Construction Engineering"
+    />
+    <meta
+      name="twitter:description"
+      content="Premier real estate development and turnkey construction firm delivering luxury residential projects and commercial infrastructure with structural precision."
+    />
+    <meta name="twitter:image" content="https://tayexaholdings.com/og-image.png" />
+
+    <!-- Above-the-fold font preloads. Inter 400/600 are the two weights used
+         in the Hero (eyebrow + body copy + CTA); Zodiak Bold covers the H1.
+         crossorigin is required on font preloads even for same-origin
+         requests, or the browser fetches the file twice. -->
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/inter/inter-400.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/inter/inter-600.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/zodiak/Zodiak-Bold.woff2" crossorigin />
+
+    <!-- Structured data: organization -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": ["GeneralContractor", "RealEstateAgent"],
+        "@id": "https://tayexaholdings.com/#organization",
+        "name": "Tayexa Holdings",
+        "legalName": "Tayexa Holdings",
+        "url": "https://tayexaholdings.com/",
+        "logo": "https://tayexaholdings.com/favicon.svg",
+        "image": "https://tayexaholdings.com/og-image.png",
+        "description": "Premier real estate development and turnkey construction firm delivering luxury residential projects and commercial infrastructure with structural precision.",
+        "telephone": "+880 2-887-9400",
+        "email": "contact@tayexa.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Gulshan Avenue, Gulshan-2",
+          "addressLocality": "Dhaka",
+          "postalCode": "1212",
+          "addressCountry": "BD"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 23.7925,
+          "longitude": 90.4078
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      }
+    </script>
+
+    <!-- Structured data: website -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://tayexaholdings.com/#website",
+        "name": "Tayexa Holdings",
+        "url": "https://tayexaholdings.com/",
+        "publisher": { "@id": "https://tayexaholdings.com/#organization" },
+        "inLanguage": "en"
+      }
+    </script>
+
+    <!-- Structured data: featured projects -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Tayexa Holdings Featured Projects",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "CreativeWork",
+              "name": "The Apex Heights",
+              "url": "https://tayexaholdings.com/#portfolio",
+              "description": "A contemporary residential development in Gulshan, Dhaka engineered with high-strength concrete framing, sustainable rainwater harvesting, and smart security integrations.",
+              "about": "Residential Construction",
+              "locationCreated": {
+                "@type": "Place",
+                "name": "Gulshan, Dhaka"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "CreativeWork",
+              "name": "Vanguard Trade Center",
+              "url": "https://tayexaholdings.com/#portfolio",
+              "description": "A dual-tower commercial development in Banani C/A, Dhaka designed to rigorous structural and thermal efficiency standards, with modern corporate floor plates and multi-tier basement parking.",
+              "about": "Commercial Construction",
+              "locationCreated": {
+                "@type": "Place",
+                "name": "Banani C/A, Dhaka"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "CreativeWork",
+              "name": "Horizon Enclave",
+              "url": "https://tayexaholdings.com/#portfolio",
+              "description": "A residential and mixed-use development in Bashundhara R/A, Dhaka, currently in structural framing phase with reinforced foundation engineering for long-term load distribution.",
+              "about": "Mixed-Use Development",
+              "locationCreated": {
+                "@type": "Place",
+                "name": "Bashundhara R/A, Dhaka"
+              }
+            }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

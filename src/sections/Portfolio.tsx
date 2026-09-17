@@ -106,8 +106,12 @@ function Portfolio() {
               className="animate-fade-in group flex flex-col overflow-hidden rounded-2xl border border-slate bg-navy"
             >
               <div className="relative aspect-[4/3] overflow-hidden sm:aspect-video">
-                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-surface via-navy to-slate/40 transition-transform duration-500 group-hover:scale-105">
-                  <Building2 size={48} strokeWidth={1} className="text-cream/10" />
+                <div
+                  role="img"
+                  aria-label={`Tayexa Holdings — ${project.title}, a ${project.category.toLowerCase()} development in ${project.location}`}
+                  className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-surface via-navy to-slate/40 transition-transform duration-500 group-hover:scale-105"
+                >
+                  <Building2 size={48} strokeWidth={1} aria-hidden="true" className="text-cream/10" />
                 </div>
                 <span className="absolute left-4 top-4 rounded-full border border-slate bg-navy/80 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-cream backdrop-blur-sm">
                   {project.category}
