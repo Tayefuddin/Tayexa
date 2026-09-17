@@ -33,8 +33,17 @@ function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <a href="#hero" className="font-heading text-xl font-bold tracking-tight text-cream md:text-2xl">
-          Tayexa Holdings
+        <a href="#hero" className="flex items-center gap-2.5">
+          <img
+            src="/logo/mark.webp"
+            alt="Tayexa Holdings crest"
+            width={27}
+            height={40}
+            className="h-9 w-auto md:h-10"
+          />
+          <span className="font-heading text-xl font-bold tracking-tight text-cream md:text-2xl">
+            Tayexa Holdings
+          </span>
         </a>
 
         <ul className="hidden items-center gap-8 md:flex">

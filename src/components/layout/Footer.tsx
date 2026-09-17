@@ -54,7 +54,16 @@ function Footer() {
 
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <p className="font-heading text-xl font-bold text-cream">Tayexa Holdings</p>
+            <div className="flex items-center gap-2.5">
+              <img
+                src="/logo/mark.webp"
+                alt="Tayexa Holdings crest"
+                width={27}
+                height={40}
+                className="h-9 w-auto"
+              />
+              <p className="font-heading text-xl font-bold text-cream">Tayexa Holdings</p>
+            </div>
             <p className="mt-4 text-sm leading-relaxed text-muted">
               A premier real estate development and construction firm committed to
               high-standard structural engineering, disciplined execution, and long-term asset
