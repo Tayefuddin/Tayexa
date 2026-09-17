@@ -1,0 +1,76 @@
+@import "tailwindcss";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+
+/* Zodiak is a licensed display serif (Pangram Pangram). Drop the licensed
+   woff2 files into /public/fonts/zodiak/ to activate it; until then the
+   font-heading stack below falls back to a high-contrast serif. */
+@font-face {
+  font-family: "Zodiak";
+  src: url("/fonts/zodiak/Zodiak-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  /* Brand palette */
+  --color-navy: #010736;
+  --color-surface: #0d1c42;
+  --color-slate: #22396f;
+  --color-cream: #fcf1d0;
+
+  /* Typography */
+  --font-heading: "Zodiak", "Playfair Display", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: var(--color-navy);
+    color: var(--color-cream);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.15;
+  }
+
+  img, svg, video {
+    display: block;
+    max-width: 100%;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  button {
+    font-family: inherit;
+    cursor: pointer;
+  }
+
+  ::selection {
+    background-color: var(--color-cream);
+    color: var(--color-navy);
+  }
+}
